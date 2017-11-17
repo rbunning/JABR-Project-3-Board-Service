@@ -45,6 +45,11 @@ public class Story implements Serializable {
 		super();
 	}
 
+	public Story(int storyId) {
+		super();
+		this.storyId = storyId;
+	}
+
 	public Story(int storyId, int board, int laneType, String storyName, int storyPoints, String storyDesc,
 			Date lastMoveDate) {
 		super();
