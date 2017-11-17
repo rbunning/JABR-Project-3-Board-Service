@@ -14,13 +14,13 @@ public class UpdateStoryCtrl {
 	@Autowired
 	StoryService service;
 	
-	// This used a key pair to send the lane type to the service.
+	// This method used a key pair to send the lane type to the service.
 	@PostMapping("/StoryLane")
 	public Story UpdateStoryLane(Story story) {
 		return service.updateStoryByLaneType(story);
 	}
 	
-	// This used the url to send a lane type to the service.
+	// This method used the url to send a lane type to the service.
 	@PostMapping("/StoryLane/{lane}")
 	public Story UpdateStoryLane2(Story story, @PathVariable String lane) {
 		story.setLaneType(Integer.parseInt(lane));

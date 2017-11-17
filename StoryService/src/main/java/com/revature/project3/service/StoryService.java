@@ -16,7 +16,7 @@ public class StoryService {
 	StoryRepository StoryRepo;
 
 	/* CREATE */
-	// Add a new Story to the database.
+	// Adds a new Story to the database.
 	public Story addStory(Story story) {
 		story.setLaneType(1); // Sets the default lane to Backlog.
 		story.setLastMoveDate(Date.valueOf(LocalDate.now())); // Set date to the date created.
@@ -24,12 +24,12 @@ public class StoryService {
 	}
 
 	/* READ */
-	// Get all the stories for a board.
+	// Gets all the stories for a board.
 	public List<Story> getListOfStoriesByBoard(Story story) {
 		return StoryRepo.findByBoard(story.getBoard());
 	}
 
-	// Get all the stories in a certain lane for a board.
+	// Gets all the stories in a certain lane for a board.
 	public List<Story> getListOfStoriesByBoardAndLaneType(Story story) {
 		return StoryRepo.findByBoardAndLaneType(story.getBoard(), story.getLaneType());
 	}
@@ -40,7 +40,7 @@ public class StoryService {
 	}
 
 	/* Update */
-	// Get the record that need to be updated. Changes the lane type and then saves the change.
+	// Gets the record that need to be updated. Changes the lane type and then saves the change.
 	public Story updateStoryByLaneType(Story story) {
 		Story dbStory = StoryRepo.findOne(story.getStoryId()); // Gets the current record.
 		dbStory.setLaneType(story.getLaneType()); // Set the lane to the new lane.

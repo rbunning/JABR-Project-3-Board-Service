@@ -13,7 +13,7 @@ public class AddStoryCtrl {
 	@Autowired
 	StoryService service;
 	
-	// Add a new story to the dataBase.
+	// Adds a new story to the dataBase.
 	@PostMapping("/addStory")
 	public Story addStory(Story story) {
 		return service.addStory(story);
