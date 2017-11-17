@@ -3,7 +3,9 @@ Story Service Endpoints
 NOTES
 The key value pairs are what is need to get something back form the database.
 Use the exact name for the key that is defined below.
-For /allSories and /StoryLane I was not sure with way would be better so you can ether put the lane type id in the URL or in a key value pair. They both need a the other id to work as well.
+For /allSories and /StoryLane I was not sure with way would be better.
+You can ether put the lane type id in the URL or in a key value pair.
+They both need a the other id to work as well.
 
 CREATE
 /addStory
