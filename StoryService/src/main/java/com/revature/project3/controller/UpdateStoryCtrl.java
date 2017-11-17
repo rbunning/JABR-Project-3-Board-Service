@@ -15,13 +15,13 @@ public class UpdateStoryCtrl {
 	StoryService service;
 	
 	// This method used a key pair to send the lane type to the service.
-	@PostMapping("/StoryLane")
+	@PostMapping("/storyLane")
 	public Story UpdateStoryLane(Story story) {
 		return service.updateStoryByLaneType(story);
 	}
 	
 	// This method used the url to send a lane type to the service.
-	@PostMapping("/StoryLane/{lane}")
+	@PostMapping("/storyLane/{lane}")
 	public Story UpdateStoryLane2(Story story, @PathVariable String lane) {
 		story.setLaneType(Integer.parseInt(lane));
 		return service.updateStoryByLaneType(story);
