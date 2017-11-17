@@ -1,16 +1,12 @@
 package com.revature.project3.bean;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,13 +24,6 @@ public class Board implements Serializable {
 
 	@Column(name = "BOARD_NAME")
 	private String boardName;
-
-	@Column(name = "CHART_ID")
-	private int chartId;
-
-	@ManyToMany
-	@JoinTable(name = "BOARD_USER_JOIN", joinColumns = @JoinColumn(name = "board_id", referencedColumnName = "board_id"), inverseJoinColumns = @JoinColumn(name = "su_id", referencedColumnName = "su_id"))
-	private Set<BoardUserJoin> boardUserJoins;
 
 	public Board() {
 		super();
@@ -66,26 +55,9 @@ public class Board implements Serializable {
 		this.boardName = boardName;
 	}
 
-	public int getChartId() {
-		return chartId;
-	}
-
-	public void setChartId(int chartId) {
-		this.chartId = chartId;
-	}
-
-	public Set<BoardUserJoin> getBoardUserJoins() {
-		return boardUserJoins;
-	}
-
-	public void setBoardUserJoins(Set<BoardUserJoin> boardUserJoins) {
-		this.boardUserJoins = boardUserJoins;
-	}
-
 	@Override
 	public String toString() {
-		return "Board [boardId=" + boardId + ", boardName=" + boardName + ", chartId=" + chartId + ", boardUserJoins="
-				+ boardUserJoins + "]";
+		return "Board [boardId=" + boardId + ", boardName=" + boardName + "]";
 	}
 
 }
