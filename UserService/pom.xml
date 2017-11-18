@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.example</groupId>
-	<artifactId>board-manager-service</artifactId>
+	<groupId>com.revature.project3</groupId>
+	<artifactId>UserService</artifactId>
 	<version>1</version>
 	<packaging>jar</packaging>
 
-	<name>board-manager-service</name>
-	<description>Board Service for Project 3</description>
+	<name>UserService</name>
+	<description>User microservice</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
