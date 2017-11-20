@@ -12,6 +12,10 @@ Returns List<Board>
 GET /getBoard/{boardId}
 Returns Board
 
+POST /getBoards
+  String boardIds (comma separated list of board ids)
+Returns List<Board>
+
 --UPDATE--
 
 --DELETE--
