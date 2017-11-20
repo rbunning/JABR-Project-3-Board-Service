@@ -14,11 +14,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "SCRUM_USER")
 public class ScrumUser implements Serializable {
 
 	private static final long serialVersionUID = -1738765309975039165L;
+	@JsonIgnore
 	@OneToMany(mappedBy = "scrumUser")
 	private Set<BoardUserJoin> boardUserJoins;
 
