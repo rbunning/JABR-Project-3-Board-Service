@@ -27,7 +27,7 @@ public class GetAllUsersNotOnBoard {
 	@GetMapping(path = "/getAllUsersNotOnBoard/{boardId}", produces = "application/json")
 	public ResponseEntity<List<ScrumUser>> getAllUsersOnBoard(@PathVariable String boardId, HttpServletRequest request) {
 		int boardNum = Integer.parseInt(boardId);
-		List<ScrumUser> scrumUserList = scrumUserRepository.findByboardUserJoins_boardUserJoinIdDto_boardIdNot(boardNum);
+		List<ScrumUser> scrumUserList = scrumUserRepository.findByboardUserJoins_boardIdNot(boardNum);
 		return new ResponseEntity<List<ScrumUser>>(scrumUserList, HttpStatus.OK);
 	}
 }

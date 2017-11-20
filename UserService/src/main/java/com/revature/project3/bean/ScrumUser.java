@@ -9,9 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,10 +20,9 @@ import javax.persistence.Table;
 public class ScrumUser implements Serializable {
 
 	private static final long serialVersionUID = -1738765309975039165L;
-	@ManyToMany
-	@JoinTable(name = "BOARD_USER_JOIN", joinColumns = @JoinColumn(name = "board_id", referencedColumnName = "board_id"), inverseJoinColumns = @JoinColumn(name = "su_id", referencedColumnName = "su_id"))
+	@OneToMany(mappedBy="scrumUser")
 	private Set<BoardUserJoin> boardUserJoins;
-
+ 
 	@Id
 	@Column(name = "SU_ID")
 	@SequenceGenerator(allocationSize = 1, sequenceName = "SCRUM_USER_SEQ", name = "SU_SEQ")
