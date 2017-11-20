@@ -10,6 +10,9 @@ No return value
 GET /allUsers
 Returns List<ScrumUser>
 
+GET /getBoardsForUser/{userId}
+Returns String (comma separated list of board ids)
+
 GET /getAllUsersOnBoard/{boardId}
 Returns List<ScrumUser>
 
