@@ -27,7 +27,11 @@ public class GetAllUsersNotOnBoard {
 	@GetMapping(path = "/getAllUsersNotOnBoard/{boardId}", produces = "application/json")
 	public ResponseEntity<List<ScrumUser>> getAllUsersOnBoard(@PathVariable String boardId, HttpServletRequest request) {
 		int boardNum = Integer.parseInt(boardId);
-		List<ScrumUser> scrumUserList = scrumUserRepository.findByboardUserJoins_boardIdNot(boardNum);
+		List<ScrumUser> scrumUserListOnBoard = scrumUserRepository.findByboardUserJoins_boardId(boardNum);
+		List<ScrumUser> scrumUserList = (List<ScrumUser>) scrumUserRepository.findAll();
+		for (ScrumUser su : scrumUserListOnBoard) {
+			scrumUserList.remove(su);
+		}
 		return new ResponseEntity<List<ScrumUser>>(scrumUserList, HttpStatus.OK);
 	}
 }
