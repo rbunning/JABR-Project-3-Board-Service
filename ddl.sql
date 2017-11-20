@@ -68,13 +68,15 @@ CREATE TABLE scrum_user(
 /
 
 CREATE TABLE board_user_join(
+ buj_id INT,
  board_id INT,
  su_id INT,
- PRIMARY KEY(board_id, su_id),
+ PRIMARY KEY(buj_id),
  FOREIGN KEY(su_id) REFERENCES scrum_user(su_id)
 );
 /
 CREATE SEQUENCE scrum_user_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE buj_id_seq START WITH 1 INCREMENT BY 1;
 
 -- For chart service
 CREATE TABLE chart(
