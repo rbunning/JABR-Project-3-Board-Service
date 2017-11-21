@@ -27,9 +27,7 @@ public class Task implements Serializable {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="taskSeq")
 	private int taskId;
 
-//	@JsonIgnore
-//	@ManyToOne
-	@JoinColumn(name="STORY_ID")
+	@Column(name="STORY_ID")
 	private int storyId;
 
 	@Column(name="TASK_DESC")
