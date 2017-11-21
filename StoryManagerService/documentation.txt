@@ -1,13 +1,12 @@
-
-Story Service Endpoints
-
+-----------------------------
+---Story Service Endpoints---
+-----------------------------
 --CREATE--
 POST /addStory
   key: board, value: (Board ID)
   key: storyName, value: (String Value)
   key: storyPoints, value: (int Value)
   key: storyDesc, value: (String Value)
-
 
 --READ--
 GET /story/{Story ID}
@@ -19,11 +18,9 @@ POST /allStories
   key: board, value: (Board ID)
   key: laneType, value: (lane Type ID)
 
-
 --UPDATE--
 POST /StoryLane/{lane Type ID}
   key: board, value: (Story ID)
-
 
 POST /StoryLane
   key: board, value: (Story ID)
@@ -31,3 +28,13 @@ POST /StoryLane
 
 --DELETE--
 
+----------------------------------
+---Story Logs Service Endpoints---
+----------------------------------
+--CREATE--
+
+--READ--
+
+--UPDATE--
+
+--DELETE--
