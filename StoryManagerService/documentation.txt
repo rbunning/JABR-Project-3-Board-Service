@@ -11,7 +11,7 @@ POST /addStory
 --READ--
 GET /story/{Story ID}
 
-POST /allStories/{lane Type ID}
+POST /allStories/{lane Type ID} // Probably won't need this one
   key: board, value: (Board ID)
 
 POST /allStories
@@ -19,10 +19,10 @@ POST /allStories
   key: laneType, value: (lane Type ID)
 
 --UPDATE--
-POST /StoryLane/{lane Type ID}
+POST /moveStoryLane/{lane Type ID} // Probably won't need this one
   key: board, value: (Story ID)
 
-POST /StoryLane
+POST /moveStoryLane
   key: board, value: (Story ID)
   key: laneType, value: (lane Type ID)
 
@@ -34,6 +34,9 @@ POST /StoryLane
 --CREATE--
 
 --READ--
+GET /storyLogs
+
+GET /storyCurrentLogs
 
 --UPDATE--
 
