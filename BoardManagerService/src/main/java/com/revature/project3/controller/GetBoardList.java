@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project3.bean.Board;
@@ -24,8 +25,8 @@ public class GetBoardList {
 	@Autowired
 	BoardRepository boardRepository;
 
-	@PostMapping(path = "/getBoards", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<List<Board>> getBoardList(String boardIds, HttpServletRequest request) {
+	@PostMapping(path = "/getBoards", consumes = "text/plain", produces = "application/json")
+	public ResponseEntity<List<Board>> getBoardList(@RequestBody String boardIds, HttpServletRequest request) {
 		List<String> boardIdStringList = new ArrayList<String>(Arrays.asList(boardIds.split(",")));
 		ArrayList<Integer> boardIdList = new ArrayList<Integer>();
 		for(String boardId : boardIdStringList){
