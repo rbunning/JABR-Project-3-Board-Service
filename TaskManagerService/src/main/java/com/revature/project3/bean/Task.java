@@ -28,7 +28,7 @@ public class Task implements Serializable {
 	private int taskId;
 
 //	@JsonIgnore
-	@ManyToOne
+//	@ManyToOne
 	@JoinColumn(name="STORY_ID")
 	private int storyId;
 
