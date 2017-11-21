@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class StoryAspect {
-	 // dddsds
+	
 	static Logger log;
 	
 	@Before("within(com.revature.project3.service.StoryService)")
