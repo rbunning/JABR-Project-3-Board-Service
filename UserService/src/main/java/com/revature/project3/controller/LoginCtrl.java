@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project3.bean.ScrumUser;
@@ -23,7 +24,7 @@ public class LoginCtrl {
 	ScrumUserRepository scrumUserRepository;
 
 	@PostMapping(path = "/login", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<ScrumUser> loginUser(ScrumUser userLogin, HttpServletRequest request) {
+	public ResponseEntity<ScrumUser> loginUser(@RequestBody ScrumUser userLogin, HttpServletRequest request) {
 		ScrumUser validUser = new ScrumUser();
 		validUser.setScrumUserId(0);
 		List<ScrumUser> userList = (List<ScrumUser>) scrumUserRepository
