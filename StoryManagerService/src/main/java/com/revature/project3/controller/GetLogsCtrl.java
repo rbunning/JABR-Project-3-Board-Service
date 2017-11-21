@@ -18,12 +18,12 @@ public class GetLogsCtrl {
 	// Returns all logs for the story service.
 	@GetMapping("/storyLogs")
 	public List<Logs> getAllLogs() {
-		return service.GetAllLogs();
+		return service.getAllLogs();
 	}
 	
 	// Returns logs based on the current day.
 	@GetMapping("/storyCurrentLogs")
 	public List<Logs> getAllCurrentLogs() {
-		return service.GetLogsByDate();
+		return service.getLogsByDate();
 	}
 }

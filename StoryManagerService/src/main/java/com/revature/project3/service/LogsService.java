@@ -17,12 +17,12 @@ public class LogsService {
 	
 	/* READ */
 	// Gets the current day and sends that as a parameter to the DB.
-	public List<Logs> GetLogsByDate() {
+	public List<Logs> getLogsByDate() {
 		return logsRepo.findBylogsDatedLike(LocalDate.now().toString());
 	}
 	
 	// Get all the logs from the DB.
-	public List<Logs> GetAllLogs() {
+	public List<Logs> getAllLogs() {
 		return (List<Logs>) logsRepo.findAll();
 	}
 
