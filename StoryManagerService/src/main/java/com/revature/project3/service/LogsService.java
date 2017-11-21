@@ -15,10 +15,13 @@ public class LogsService {
 	@Autowired
 	LogsRepository logsRepo;
 	
+	/* READ */
+	// Gets the current day and sends that as a parameter to the DB.
 	public List<Logs> GetLogsByDate() {
 		return logsRepo.findBylogsDatedLike(LocalDate.now().toString());
 	}
 	
+	// Get all the logs from the DB.
 	public List<Logs> GetAllLogs() {
 		return (List<Logs>) logsRepo.findAll();
 	}
