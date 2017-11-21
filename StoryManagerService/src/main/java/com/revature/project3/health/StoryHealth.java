@@ -8,7 +8,7 @@ public class StoryHealth implements HealthIndicator{
 	@Override
 	public Health health() {
 		
-		return Health.up().build();
+		return Health.down().build();
 	}
 
 }
