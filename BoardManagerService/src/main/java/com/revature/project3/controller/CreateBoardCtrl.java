@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project3.bean.Board;
@@ -21,7 +22,7 @@ public class CreateBoardCtrl {
 	BoardRepository boardRepository;
 
 	@PostMapping(path = "/newBoard", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Board> addBoard(Board newBoard, HttpServletRequest request) {
+	public ResponseEntity<Board> addBoard(@RequestBody Board newBoard, HttpServletRequest request) {
 		boardRepository.save(newBoard);
 		return new ResponseEntity<Board>(newBoard, HttpStatus.OK);
 	}

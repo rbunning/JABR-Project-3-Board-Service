@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project3.bean.BoardUserJoin;
@@ -22,8 +23,8 @@ public class AddUserToBoard {
 	@Autowired
 	ScrumUserRepository scrumUserRepository;
 
-	@PostMapping(path = "/addUserToBoard", consumes = "application/json", produces = "application/json")
-	public void addUser(BoardUserDto boardUserDto, HttpServletRequest request) {
+	@PostMapping(path = "/addUserToBoard", consumes = "application/json")
+	public void addUser(@RequestBody BoardUserDto boardUserDto, HttpServletRequest request) {
 		ScrumUser scrumUser = scrumUserRepository.findOne(boardUserDto.getScrumUserId());
 		Set<BoardUserJoin> boardUsers = scrumUser.getBoardUserJoins();
 		BoardUserJoin newBoardUser = new BoardUserJoin(boardUserDto.getBoardId(), scrumUser);
