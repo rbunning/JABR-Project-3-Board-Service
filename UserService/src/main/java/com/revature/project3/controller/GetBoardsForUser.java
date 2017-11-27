@@ -25,7 +25,7 @@ public class GetBoardsForUser {
 	@Autowired
 	ScrumUserRepository scrumUserRepository;
 
-	@GetMapping(path = "/getBoardsForUser/{userId}", produces = "application/json")
+	@GetMapping(path = "/getBoardsForUser/{userId}", produces = "text/plain")
 	public ResponseEntity<String> getBoardIds(@PathVariable String userId, HttpServletRequest request) {
 		int userNum = Integer.parseInt(userId);
 		ScrumUser scrumUser = scrumUserRepository.findOne(userNum);

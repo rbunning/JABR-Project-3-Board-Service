@@ -26,8 +26,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Story implements Serializable {
 
 	private static final long serialVersionUID = 3437652641718304355L;
-//	@OneToMany(mappedBy = "story", fetch = FetchType.EAGER)
-//	Set<Task> task = new HashSet<Task>();
 
 	@Id
 	@Column(name = "STORY_ID")
@@ -35,13 +33,10 @@ public class Story implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "storySeq")
 	private int storyId;
 
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "BOARD_ID")
+	@Column(name = "BOARD_ID")
 	private int boardId;
 
-	@ManyToOne
-	@JoinColumn(name = "LT_ID")
+	@Column(name = "LT_ID")
 	private int laneTypeId;
 
 	@Column(name = "STORY_NAME")

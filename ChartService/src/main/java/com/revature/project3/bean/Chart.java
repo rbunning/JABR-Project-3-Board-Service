@@ -27,9 +27,7 @@ public class Chart implements Serializable {
 	@GeneratedValue(generator="C_SEQ", strategy=GenerationType.SEQUENCE)
 	private int chartId;
 	
-	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name="BOARD_ID")
+	@Column(name="BOARD_ID")
 	private int boardId;
 	
 	@Column(name="CHART_TITLE")
