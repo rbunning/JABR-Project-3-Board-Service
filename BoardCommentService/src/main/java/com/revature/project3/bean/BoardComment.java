@@ -55,6 +55,13 @@ public class BoardComment implements Serializable {
 		this.commentDate = commentDate;
 	}
 
+	public BoardComment(int boardId, int scrumUserId, String comment) {
+		super();
+		this.boardId = boardId;
+		this.scrumUserId = scrumUserId;
+		this.comment = comment;
+	}
+
 	public int getBoardCommentId() {
 		return boardCommentId;
 	}
