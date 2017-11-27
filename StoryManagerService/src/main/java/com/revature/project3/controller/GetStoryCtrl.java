@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project3.beans.Story;
@@ -16,6 +18,11 @@ public class GetStoryCtrl {
 	
 	@Autowired
 	StoryService service;
+	
+	@GetMapping("/allboardStories/{board}")
+	public List<Story> getAllStoriesByBoard(@PathVariable String board) {
+		return service.getListOfStoriesByBoard(new Story(Integer.parseInt(board), 0, null, 0, null, null));
+	}
 	
 	// Gets all the stories within a board in certain lane using key value pairs.
 	@PostMapping("/allStories")

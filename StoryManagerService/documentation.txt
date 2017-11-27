@@ -9,6 +9,10 @@ POST /addStory
   key: storyDesc, value: (String Value)
 
 --READ--
+GET /storyLogs
+
+GET /storyCurrentLogs
+
 GET /story/{Story ID}
 
 POST /allStories/{lane Type ID} // Probably won't need this one
@@ -28,16 +32,4 @@ POST /moveStoryLane
 
 --DELETE--
 
-----------------------------------
----Story Logs Service Endpoints---
-----------------------------------
---CREATE--
 
---READ--
-GET /storyLogs
-
-GET /storyCurrentLogs
-
---UPDATE--
-
---DELETE--
