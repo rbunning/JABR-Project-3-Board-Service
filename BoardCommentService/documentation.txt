@@ -1,0 +1,22 @@
+Board Comment Service Endpoints
+
+--CREATE--
+POST /newComment
+  key: boardId, value: (int Board ID)
+  key: scrumUserId, value: (int User ID)
+  key: comment, value: (String Comment)
+Returns BoardComment
+
+--READ--
+GET /getAllComments
+Returns List<BoardComment>
+
+GET /getBoardComment/{commentId}
+Returns BoardComment
+
+GET /getCommentsForBoard/{boardId}
+Returns List<BoardComment>
+
+--UPDATE--
+
+--DELETE--
