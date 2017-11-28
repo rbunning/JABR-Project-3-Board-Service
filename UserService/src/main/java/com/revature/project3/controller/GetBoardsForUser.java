@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import com.revature.project3.bean.BoardUserJoin;
 import com.revature.project3.bean.ScrumUser;
 import com.revature.project3.dao.ScrumUserRepository;
 
+@EnableResourceServer 
 @RestController
 public class GetBoardsForUser {
 

@@ -4,3 +4,10 @@ spring:
   cloud:
     config:
       uri:  http://localhost:8888
+      
+zuul:
+  routes:
+    userservice:
+      path: /user/**
+      sensitiveHeaders:
+      serviceId: user-service
