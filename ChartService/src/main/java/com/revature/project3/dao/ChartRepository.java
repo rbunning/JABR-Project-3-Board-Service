@@ -6,4 +6,5 @@ import com.revature.project3.bean.Chart;
 
 public interface ChartRepository extends CrudRepository<Chart, Integer> {
 	Chart findByboardId (int boardId);
+	
 }
