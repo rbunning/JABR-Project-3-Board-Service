@@ -26,7 +26,7 @@ public class StoryServiceApplicationTests {
 	
 	@Test
 	public void testStoryById() {
-		assertNotNull(storyService.getStoryById(testStory));
+		assertNotNull(storyService.getStoryById(testStory.getStoryId()));
 	}
 	
 	@Test

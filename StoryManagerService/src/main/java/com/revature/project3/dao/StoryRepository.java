@@ -8,8 +8,8 @@ import com.revature.project3.beans.Story;
 
 public interface StoryRepository extends CrudRepository<Story, Integer>{
 	
-	List<Story> findByBoard(int board);
+	List<Story> findByBoardId(int board);
 	
-	List<Story> findByBoardAndLaneType(int board, int laneType);
+	List<Story> findByBoardIdAndLaneTypeId(int board, int laneType);
 
 }
