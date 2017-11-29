@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.project3.bean.Chart;
-import com.revature.project3.bean.Story;
+import com.revature.project3.beans.Chart;
+import com.revature.project3.beans.Story;
 import com.revature.project3.dao.ChartRepository;
 import com.revature.project3.dao.StoryRepository;
 import com.revature.project3.dto.ChartDataDto;

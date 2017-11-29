@@ -26,7 +26,7 @@ public class Story implements Serializable {
 	@Column(name = "BOARD_ID")
 	private int boardId;
 
-	@Column(name = "LANE_TYPE")
+	@Column(name = "LT_ID")
 	private int laneTypeId;
 
 	@Column(name = "STORY_NAME")
@@ -43,11 +43,6 @@ public class Story implements Serializable {
 
 	public Story() {
 		super();
-	}
-
-	public Story(int storyId) {
-		super();
-		this.storyId = storyId;
 	}
 
 	public Story(int boardId, int laneTypeId, String storyName, int storyPoints, String storyDesc,
@@ -76,6 +71,15 @@ public class Story implements Serializable {
 	public int getStoryId() {
 		return storyId;
 	}
+
+	//Won't need tasks for Chart
+//	public Set<Task> getTask() {
+//		return task;
+//	}
+//
+//	public void setTask(Set<Task> task) {
+//		this.task = task;
+//	}
 
 	public void setStoryId(int storyId) {
 		this.storyId = storyId;
@@ -135,8 +139,7 @@ public class Story implements Serializable {
 
 	@Override
 	public String toString() {
-		//{"storyId":103,"boardId":0,"laneTypeId":1,"storyName":"","storyPoints":0,"storyDesc":"","lastMoveDate":"2017-11-29"}
-		return "{\"storyId\":" + storyId + ",\"boardId\":" + boardId + ",\"laneTypeId\":" + laneTypeId + ",\"storyName\":\"" + storyName
-				+ "\",\"storyPoints\":" + storyPoints + ",\"storyDesc\":\"" + storyDesc + "\",\"lastMoveDate\":\"" + lastMoveDate + "\"}";
+		return "Story [storyId=" + storyId + ", boardId=" + boardId + ", laneId=" + laneTypeId + ", storyName=" + storyName
+				+ ", storyPoints=" + storyPoints + ", storyDesc=" + storyDesc + ", lastMoveDate=" + lastMoveDate + "]";
 	}
 }

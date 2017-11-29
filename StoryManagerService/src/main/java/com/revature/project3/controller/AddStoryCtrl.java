@@ -36,8 +36,10 @@ public class AddStoryCtrl {
 	public Story addEmptyStory(@PathVariable String storyId) {
 		
 		Story story = new Story(Integer.parseInt(storyId));
+		story.setStoryDesc("");
+		story.setStoryName(storyId);
 		story = service.addStory(story);
-		Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action", "add").build();
+		Message<String> msg = MessageBuilder.withPayload(story.toString()).setHeader("Action", "add").build();
 		storyMessageSource.storyMessage().send(msg);
 		return story;
 	}
