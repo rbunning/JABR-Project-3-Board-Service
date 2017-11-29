@@ -35,20 +35,20 @@ public class Chart implements Serializable {
 		super();
 	}
 
-	public Chart(int chardId, int boardId, String chartTitle, Date startDate) {
+	public Chart(int chartId, int boardId, String chartTitle, Date startDate) {
 		super();
-		this.chartId = chardId;
+		this.chartId = chartId;
 		this.boardId = boardId;
 		this.chartTitle = chartTitle;
 		this.startDate = startDate;
 	}
 
-	public int getChardId() {
+	public int getChartId() {
 		return chartId;
 	}
 
-	public void setChardId(int chardId) {
-		this.chartId = chardId;
+	public void setChartId(int chartId) {
+		this.chartId = chartId;
 	}
 
 	public int getBoardId() {
@@ -81,7 +81,7 @@ public class Chart implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Chart [chardId=" + chartId + ", boardId=" + boardId + ", chartTitle=" + chartTitle + ", startDate="
+		return "Chart [chartId=" + chartId + ", boardId=" + boardId + ", chartTitle=" + chartTitle + ", startDate="
 				+ startDate + "]";
 	}
 }
