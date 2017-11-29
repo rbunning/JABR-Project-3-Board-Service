@@ -88,6 +88,7 @@ public class GetChartCtrl {
 		cdsdList.add(cdsd);
 		ChartDataDto cdd = new ChartDataDto(dataLabelsArray, cdsdList);
 		ChartDto burndownChart = new ChartDto(cdd);
+		System.err.println("burndownChart = " + burndownChart);
 		return new ResponseEntity<ChartDto>(burndownChart, HttpStatus.OK);
 	}
 	
