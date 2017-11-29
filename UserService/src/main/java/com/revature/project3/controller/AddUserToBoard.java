@@ -32,5 +32,4 @@ public class AddUserToBoard {
 		scrumUser.setBoardUserJoins(boardUsers);
 		scrumUserRepository.save(scrumUser);
 	}
-
 }
