@@ -5,6 +5,7 @@ import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project3.beans.Story;
@@ -22,7 +23,9 @@ public class UpdateStoryCtrl {
 
 	// This method used a key pair to send the lane type to the service.
 	@PostMapping("/moveStoryLane")
-	public Story UpdateStoryLane(Story story) {
+	public Story UpdateStoryLane(
+			@RequestBody
+			Story story) {
 		story = service.updateStoryByLaneType(story);
 		Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action", "update").build();
 		storyMessageSource.storyMessage().send(msg);
@@ -31,7 +34,9 @@ public class UpdateStoryCtrl {
 	
 	// This method used the url to send a lane type to the service.
 	@PostMapping("/moveStoryLane/{lane}")
-	public Story UpdateStoryLane2(Story story, @PathVariable String lane) {
+	public Story UpdateStoryLane2(
+			@RequestBody
+			Story story, @PathVariable String lane) {
 		story.setLaneTypeId(Integer.parseInt(lane));
 		story = service.updateStoryByLaneType(story);
 		Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action", "update").build();
