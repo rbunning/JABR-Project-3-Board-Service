@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.revature.project3.bean.ScrumUser;
 import com.revature.project3.dao.ScrumUserRepository;
-import com.revature.project3.dao.UserRepository;
 
 @Service("userDetailsService")
 public class UserService implements UserDetailsService {
