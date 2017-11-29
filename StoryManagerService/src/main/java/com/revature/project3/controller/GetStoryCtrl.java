@@ -17,6 +17,12 @@ public class GetStoryCtrl {
 	@Autowired
 	StoryService service;
 	
+	// Gets all the stories within a board as part of path.
+	@GetMapping("/allboardStories/{boardId}")
+	public List<Story> getAllStoriesByBoard(@PathVariable String boardId) {
+		return service.getListOfStoriesByBoard(new Story(Integer.parseInt(boardId), 0, null, 0, null, null));
+	}
+	
 	// Gets all the stories within a board in certain lane using key value pairs.
 	@PostMapping("/allStories")
 	public List<Story> getAllStories(Story story) {
