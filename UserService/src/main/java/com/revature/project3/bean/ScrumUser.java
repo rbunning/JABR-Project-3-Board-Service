@@ -1,6 +1,9 @@
 package com.revature.project3.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,11 +17,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "SCRUM_USER")
-public class ScrumUser implements Serializable {
+public class ScrumUser implements Serializable, UserDetails {
 
 	private static final long serialVersionUID = -1738765309975039165L;
 	@JsonIgnore
@@ -137,6 +143,42 @@ public class ScrumUser implements Serializable {
 		return "ScrumUser [boardUserJoins=" + boardUserJoins + ", scrumUserId=" + scrumUserId + ", roleType=" + roleType
 				+ ", scrumUserFirstname=" + scrumUserFirstname + ", scrumUserLastname=" + scrumUserLastname
 				+ ", scrumUserUsername=" + scrumUserUsername + ", scrumUserPassword=" + scrumUserPassword + "]";
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		return authorities;
+	}
+
+	@Override
+	public String getPassword() {
+		return getScrumUserPassword();
+	}
+
+	@Override
+	public String getUsername() {
+		return getScrumUserUsername();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 
 }
