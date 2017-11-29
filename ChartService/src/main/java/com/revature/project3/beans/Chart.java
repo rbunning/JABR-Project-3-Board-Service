@@ -1,4 +1,4 @@
-package com.revature.project3.bean;
+package com.revature.project3.beans;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -8,12 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="CHART")
@@ -39,20 +35,20 @@ public class Chart implements Serializable {
 		super();
 	}
 
-	public Chart(int chardId, int boardId, String chartTitle, Date startDate) {
+	public Chart(int chartId, int boardId, String chartTitle, Date startDate) {
 		super();
-		this.chartId = chardId;
+		this.chartId = chartId;
 		this.boardId = boardId;
 		this.chartTitle = chartTitle;
 		this.startDate = startDate;
 	}
 
-	public int getChardId() {
+	public int getChartId() {
 		return chartId;
 	}
 
-	public void setChardId(int chardId) {
-		this.chartId = chardId;
+	public void setChartId(int chartId) {
+		this.chartId = chartId;
 	}
 
 	public int getBoardId() {

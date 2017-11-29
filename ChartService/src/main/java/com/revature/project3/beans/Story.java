@@ -1,25 +1,15 @@
-package com.revature.project3.bean;
-
-//  **Not sure if I will need this bean
+package com.revature.project3.beans;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "STORY")
@@ -78,7 +68,7 @@ public class Story implements Serializable {
 		this.lastMoveDate = lastMoveDate;
 	}
 
-	public int getStory() {
+	public int getStoryId() {
 		return storyId;
 	}
 
@@ -91,7 +81,7 @@ public class Story implements Serializable {
 //		this.task = task;
 //	}
 
-	public void setStory(int storyId) {
+	public void setStoryId(int storyId) {
 		this.storyId = storyId;
 	}
 

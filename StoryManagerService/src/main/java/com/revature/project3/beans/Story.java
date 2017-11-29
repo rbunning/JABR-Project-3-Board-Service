@@ -24,10 +24,10 @@ public class Story implements Serializable {
 	private int storyId;
 
 	@Column(name = "BOARD_ID")
-	private int board;
+	private int boardId;
 
 	@Column(name = "LANE_TYPE")
-	private int laneType;
+	private int laneTypeId;
 
 	@Column(name = "STORY_NAME")
 	private String storyName;
@@ -50,22 +50,23 @@ public class Story implements Serializable {
 		this.storyId = storyId;
 	}
 
-	public Story(int storyId, int board, int laneType, String storyName, int storyPoints, String storyDesc,
+	public Story(int boardId, int laneTypeId, String storyName, int storyPoints, String storyDesc,
 			Date lastMoveDate) {
 		super();
-		this.storyId = storyId;
-		this.board = board;
-		this.laneType = laneType;
+		this.boardId = boardId;
+		this.laneTypeId = laneTypeId;
 		this.storyName = storyName;
 		this.storyPoints = storyPoints;
 		this.storyDesc = storyDesc;
 		this.lastMoveDate = lastMoveDate;
 	}
 
-	public Story(int board, int laneType, String storyName, int storyPoints, String storyDesc, Date lastMoveDate) {
+	public Story(int storyId, int boardId, int laneTypeId, String storyName, int storyPoints, String storyDesc,
+			Date lastMoveDate) {
 		super();
-		this.board = board;
-		this.laneType = laneType;
+		this.storyId = storyId;
+		this.boardId = boardId;
+		this.laneTypeId = laneTypeId;
 		this.storyName = storyName;
 		this.storyPoints = storyPoints;
 		this.storyDesc = storyDesc;
@@ -80,20 +81,20 @@ public class Story implements Serializable {
 		this.storyId = storyId;
 	}
 
-	public int getBoard() {
-		return board;
+	public int getBoardId() {
+		return boardId;
 	}
 
-	public void setBoard(int board) {
-		this.board = board;
+	public void setBoard(int boardId) {
+		this.boardId = boardId;
 	}
 
-	public int getLaneType() {
-		return laneType;
+	public int getLaneTypeId() {
+		return laneTypeId;
 	}
 
-	public void setLaneType(int laneType) {
-		this.laneType = laneType;
+	public void setLaneTypeId(int laneTypeId) {
+		this.laneTypeId = laneTypeId;
 	}
 
 	public String getStoryName() {
@@ -134,8 +135,8 @@ public class Story implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Story [storyId=" + storyId + ", board=" + board + ", laneType=" + laneType + ", storyName=" + storyName
-				+ ", storyPoints=" + storyPoints + ", storyDesc=" + storyDesc + ", lastMoveDate=" + lastMoveDate + "]";
+		//{"storyId":103,"boardId":0,"laneTypeId":1,"storyName":"","storyPoints":0,"storyDesc":"","lastMoveDate":"2017-11-29"}
+		return "{\"storyId\":" + storyId + ",\"boardId\":" + boardId + ",\"laneTypeId\":" + laneTypeId + ",\"storyName\":\"" + storyName
+				+ "\",\"storyPoints\":" + storyPoints + ",\"storyDesc\":\"" + storyDesc + "\",\"lastMoveDate\":\"" + lastMoveDate + "\"}";
 	}
-
 }
