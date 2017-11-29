@@ -28,10 +28,17 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("scrum").secret("scrum").authorizedGrantTypes("client_credentials")
-				.scopes("resource-server-read").accessTokenValiditySeconds(20);
+		clients.inMemory()
+		.withClient("scrum")
+		.secret("scrum")
+		.authorizedGrantTypes("password", "refresh_token")
+		.scopes("resource-server-read")
+		.accessTokenValiditySeconds(20);
 	}
 
 	@Override
@@ -42,7 +49,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.tokenStore(tokenStore()).tokenEnhancer(jwtTokenEnhancer())
-				.authenticationManager(authenticationManager);
+				.authenticationManager(authenticationManager)
+				.userDetailsService(userDetailsService);
 	}
 
 	@Bean
