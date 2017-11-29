@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.revature.project3.bean.Logs;
+import com.revature.project3.beans.Logs;
 
 public interface LogsRepository  extends CrudRepository<Logs, Integer>{
 

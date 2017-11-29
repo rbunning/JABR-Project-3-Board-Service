@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.project3.bean.Logs;
+import com.revature.project3.beans.Logs;
 import com.revature.project3.dao.LogsRepository;
 
 @Service(value = "AppLogsService")
