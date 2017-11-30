@@ -37,7 +37,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 		.secret("scrum")
 		.authorizedGrantTypes("password", "refresh_token")
 		.scopes("resource-server-read")
-		.accessTokenValiditySeconds(20);
+		.accessTokenValiditySeconds(6000);
 	}
 
 	@Override
