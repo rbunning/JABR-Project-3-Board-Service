@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.project3.bean.Logs;
+import com.revature.project3.beans.Logs;
 import com.revature.project3.service.LogsService;
 
 @RestController
