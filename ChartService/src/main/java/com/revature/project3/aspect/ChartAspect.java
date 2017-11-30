@@ -11,43 +11,24 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class ChartAspect {
-	
-	
 	static Logger log;
-		
-		@Before("within(com.revature.project3.dao.ChartRepository)")
-		public void adviseForAllDaoMethods(JoinPoint jp) {
-			log = Logger.getLogger(jp.getClass().getName());
-			log.info("Before the dao method: " + jp.getSignature().getName());
-		}
+	
+	@Before("within(com.revature.project3.service.ChartService)")
+	public void adviseForAllServiceMethods(JoinPoint jp) {
+		log = Logger.getLogger(jp.getClass().getName());
+		log.info("Before the service method: " + jp.getSignature().getName());
+	}
 
-		@AfterReturning("within(com.revature.project3.dao.ChartRepository)")
-		public void adviseForAllDaoMethodsReturn(JoinPoint jp) {
-			log = Logger.getLogger(jp.getClass().getName());
-			log.info("The dao method: " + jp.getSignature().getName() + " returned successfully");
-		}
+	@AfterReturning("within(com.revature.project3.service.ChartService)")
+	public void adviseForAllServiceMethodsReturn(JoinPoint jp) {
+		log = Logger.getLogger(jp.getClass().getName());
+		log.info("The serivce method: " + jp.getSignature().getName() + " returned successfully");
+	}
 
-		@AfterThrowing("within(com.revature.project3.dao.ChartRepository)")
-		public void adviseForAllDaoMethodsException(JoinPoint jp) {
-			log = Logger.getLogger(jp.getClass().getName());
-			log.info("The Ctrl method: " + jp.getSignature().getName() + " threw an exception");
-		}
-		
-		@Before("within(com.revature.project3.controller.*)")
-		public void adviseForAllCtrlMethods(JoinPoint jp) {
-			log = Logger.getLogger(jp.getClass().getName());
-			log.info("Before the Ctrl method: " + jp.getSignature().getName());
-		}
+	@AfterThrowing("within(com.revature.project3.service.ChartService)")
+	public void adviseForAllServiceMethodsException(JoinPoint jp) {
+		log = Logger.getLogger(jp.getClass().getName());
+		log.info("The serivce method: " + jp.getSignature().getName() + " threw an exception");
+	}
 
-		@AfterReturning("within(com.revature.project3.controller.*)")
-		public void adviseForAllCtrlMethodsReturn(JoinPoint jp) {
-			log = Logger.getLogger(jp.getClass().getName());
-			log.info("The Ctrl method: " + jp.getSignature().getName() + " returned successfully");
-		}
-
-		@AfterThrowing("within(com.revature.project3.controller.*)")
-		public void adviseForAllCtrlMethodsException(JoinPoint jp) {
-			log = Logger.getLogger(jp.getClass().getName());
-			log.info("The Ctrl method: " + jp.getSignature().getName() + " threw an exception");
-		}
 }

@@ -11,14 +11,6 @@ import javax.persistence.Table;
 @Table(name = "LOGS")
 public class Logs implements Serializable {
 
-	/**
-	 * LOGS -table 
-	 * L_ID -column 
-	 * L_DATED -column 
-	 * L_LOGGER -column 
-	 * L_LEVEL -column
-	 * L_MESSAGE -column
-	 */
 	private static final long serialVersionUID = -6345654551274498476L;
 
 	@Id
