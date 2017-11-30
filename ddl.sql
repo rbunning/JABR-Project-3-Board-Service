@@ -68,15 +68,13 @@ CREATE TABLE scrum_user(
 /
 
 CREATE TABLE board_user_join(
- buj_id INT,
  board_id INT,
  su_id INT,
- PRIMARY KEY(buj_id),
+ PRIMARY KEY(board_id, su_id),
  FOREIGN KEY(su_id) REFERENCES scrum_user(su_id)
 );
 /
 CREATE SEQUENCE scrum_user_seq START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE buj_id_seq START WITH 1 INCREMENT BY 1;
 
 -- For chart service
 CREATE TABLE chart(
@@ -88,3 +86,36 @@ CREATE TABLE chart(
 );
 /
 CREATE SEQUENCE chart_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE board_comment(
+ board_comment_id INT,
+ board_id INT,
+ su_id INT,
+ comment_desc VARCHAR2(4000),
+ comment_date DATETIME DEFAULT sysdate,
+ PRIMARY KEY(board_comment_id)
+);
+/
+CREATE SEQUENCE board_comment_seq START WITH 1 INCREMENT BY 1;
+
+--In every database run the following for logging
+CREATE TABLE logs(
+ l_id INT,
+ l_dated VARCHAR2(4000),
+ l_level VARCHAR2(4000),
+ l_logger VARCHAR2(4000),
+ l_message VARCHAR2(4000),
+ PRIMARY KEY(l_id)
+);
+/
+CREATE SEQUENCE log_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER log_seq_trg 
+BEFORE INSERT ON logs
+FOR EACH ROW
+BEGIN
+IF :new.L_ID IS NULL THEN
+  SELECT log_seq.NEXTVAL INTO :new.L_ID FROM dual;
+END IF;
+END;
+/

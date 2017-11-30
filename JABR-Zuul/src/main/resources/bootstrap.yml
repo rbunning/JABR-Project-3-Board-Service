@@ -3,27 +3,5 @@ spring:
     name: Zuul-Service
   cloud:
     config:
-       uri: http://localhost:8888 
-#      uri:  http://18.221.160.13:8888
-      
-
-#
-#server:
-#  port: 8765
-#
-#spring:
-#  application:
-#    name: Zuul-Service
-#  datasource:
-#    tomcat: 
-#      initial-size: 1
-#hystrix:
-#  command:
-#    default:
-#      execution:
-#        timeout:
-#          enabled: false
-#eureka:
-#  client:
-#    register-with-eureka: true
-#    fetch-registry: true
+      uri: http://localhost:8888
+#      uri: http://18.221.160.13:8888
