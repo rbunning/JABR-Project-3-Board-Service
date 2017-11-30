@@ -10,22 +10,22 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class ChartAspect {
+public class BoardCommentAspect {
 	static Logger log;
 	
-	@Before("within(com.revature.project3.service.ChartService)")
+	@Before("within(com.revature.project3.service.BoardCommentService)")
 	public void adviseForAllServiceMethods(JoinPoint jp) {
 		log = Logger.getLogger(jp.getClass().getName());
 		log.info("Before the service method: " + jp.getSignature().getName());
 	}
 
-	@AfterReturning("within(com.revature.project3.service.ChartService)")
+	@AfterReturning("within(com.revature.project3.service.BoardCommentService)")
 	public void adviseForAllServiceMethodsReturn(JoinPoint jp) {
 		log = Logger.getLogger(jp.getClass().getName());
 		log.info("The serivce method: " + jp.getSignature().getName() + " returned successfully");
 	}
 
-	@AfterThrowing("within(com.revature.project3.service.ChartService)")
+	@AfterThrowing("within(com.revature.project3.service.BoardCommentService)")
 	public void adviseForAllServiceMethodsException(JoinPoint jp) {
 		log = Logger.getLogger(jp.getClass().getName());
 		log.info("The serivce method: " + jp.getSignature().getName() + " threw an exception");

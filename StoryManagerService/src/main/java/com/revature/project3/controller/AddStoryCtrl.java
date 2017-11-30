@@ -24,9 +24,7 @@ public class AddStoryCtrl {
 	
 	// Adds a new story to the dataBase.
 	@PostMapping("/addStory")
-	public Story addStory(
-			@RequestBody
-			Story story) {
+	public Story addStory(@RequestBody Story story) {
 		
 		story = service.addStory(story);
 		Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action", "add").build();

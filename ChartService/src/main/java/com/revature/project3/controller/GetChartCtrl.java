@@ -8,7 +8,6 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -20,29 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project3.beans.Chart;
 import com.revature.project3.beans.Story;
-import com.revature.project3.dao.ChartRepository;
-import com.revature.project3.dao.StoryRepository;
 import com.revature.project3.dto.ChartDataDto;
 import com.revature.project3.dto.ChartDatasetDto;
 import com.revature.project3.dto.ChartDto;
+import com.revature.project3.service.ChartService;
 
 @EnableEurekaClient
 @RestController
 public class GetChartCtrl {
 
 	@Autowired
-	DataSource dataSource;
-	
-	@Autowired
-	ChartRepository chartRepo;
-	
-	@Autowired 
-	StoryRepository storyRepo;
-	
+	ChartService chartService;
+
 	@GetMapping(path = "/getChart/{boardId}", produces = "application/json")
 	public ResponseEntity<ChartDto> getChartData(@PathVariable String boardId, HttpServletRequest request) {
 		int boardNum = Integer.parseInt(boardId);
-		Set<Story> stories = (Set<Story>) storyRepo.findByboardId(boardNum);
+		Set<Story> stories = chartService.getStorySet(boardNum);
 		Map<LocalDate, Integer> storyData = new TreeMap<LocalDate, Integer>();
 		int totalPoints = 0;
 		for (Story story : stories) {
@@ -54,10 +46,10 @@ public class GetChartCtrl {
 				storyData.put(doneDate, story.getStoryPoints());
 			}
 		}
-		
+
 		List<String> dataLabels = new ArrayList<>();
 		List<Integer> dataValues = new ArrayList<>();
-		Chart chart = chartRepo.findByboardId(boardNum);
+		Chart chart = chartService.getChart(boardNum);
 		LocalDate startDate = chart.getStartDate().toLocalDate();
 		dataLabels.add(startDate.toString());
 		dataValues.add(totalPoints);
@@ -91,5 +83,5 @@ public class GetChartCtrl {
 		System.err.println("burndownChart = " + burndownChart);
 		return new ResponseEntity<ChartDto>(burndownChart, HttpStatus.OK);
 	}
-	
+
 }

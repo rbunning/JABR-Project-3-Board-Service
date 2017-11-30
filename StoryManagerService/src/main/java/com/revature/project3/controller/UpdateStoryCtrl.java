@@ -23,9 +23,7 @@ public class UpdateStoryCtrl {
 
 	// This method used a key pair to send the lane type to the service.
 	@PostMapping("/moveStoryLane")
-	public Story UpdateStoryLane(
-			@RequestBody
-			Story story) {
+	public Story UpdateStoryLane(@RequestBody Story story) {
 		story = service.updateStoryByLaneType(story);
 		Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action", "update").build();
 		storyMessageSource.storyMessage().send(msg);
@@ -34,9 +32,7 @@ public class UpdateStoryCtrl {
 	
 	// This method used the url to send a lane type to the service.
 	@PostMapping("/moveStoryLane/{lane}")
-	public Story UpdateStoryLane2(
-			@RequestBody
-			Story story, @PathVariable String lane) {
+	public Story UpdateStoryLane2(Story story, @PathVariable String lane) {
 		story.setLaneTypeId(Integer.parseInt(lane));
 		story = service.updateStoryByLaneType(story);
 		Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action", "update").build();
