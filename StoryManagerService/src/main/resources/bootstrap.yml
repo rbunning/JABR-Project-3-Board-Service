@@ -1,6 +1,56 @@
+#spring:
+#  application:
+#    name: story-manager-service
+#  cloud:
+#    config:
+#      uri:  http://localhost:8888
+security:
+ oauth2:
+   resource:
+     accessTokenUri: http://localhost:8765/user/oauth/check_token
+     userAuthorizationUri: http://localhost:8765/user/oauth/authorize
+     #userInfoUri: http://localhost:8090/auth/user
+     jwt:
+       keyUri: http://localhost:8765/user/oauth/token_key
+
+
+
+server:
+  port: 0
+
 spring:
   application:
     name: story-manager-service
-  cloud:
-    config:
-      uri:  http://localhost:8888
+  datasource:
+    tomcat: 
+      initial-size: 1
+    url: jdbc:oracle:thin:@octocat.c21x4yygth5e.us-east-2.rds.amazonaws.com:1521:ORCL
+    username: p3story
+    password: p4ssw0rd
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+#  rabbitmq:
+#    host: localhost
+#    password: guest
+#    username: guest
+#    port: 5672
+#  cloud:
+#    stream:
+#      bindings:
+#        output:
+#          contentType: application/json
+#  integration:
+#    readOnly:
+#      headers: contentType
+      
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+#    healthcheck:
+#      enabled: true
+#    serviceUrl:
+#      defaultZone: http://18.221.160.13:8761/eureka

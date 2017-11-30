@@ -1,11 +1,41 @@
+#spring:
+#  application:
+#    name: user-service
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
+#  mvc:
+#    dispatchOptionsRequest: true 
+#keystore:
+# password: mySecretKey
+
+ 
+server:
+  port: 0
+
 spring:
   application:
     name: user-service
-  cloud:
-    config:
-      uri: http://localhost:8888
+  datasource:
+    tomcat: 
+      initial-size: 1
+    url: jdbc:oracle:thin:@octocat.c21x4yygth5e.us-east-2.rds.amazonaws.com:1521:ORCL
+    username: p3user
+    password: p4ssw0rd
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.Oracle10gDialect
   mvc:
     dispatchOptionsRequest: true 
-#server.contextPath: /auth
+    
 keystore:
  password: mySecretKey
+      
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+#    serviceUrl:
+#      defaultZone: http://18.221.160.13:8761/eureka
