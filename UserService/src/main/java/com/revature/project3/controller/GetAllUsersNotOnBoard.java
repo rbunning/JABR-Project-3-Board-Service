@@ -2,9 +2,6 @@ package com.revature.project3.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,26 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.project3.bean.ScrumUser;
-import com.revature.project3.dao.ScrumUserRepository;
+import com.revature.project3.beans.ScrumUser;
+import com.revature.project3.service.UserService;
 
 @RestController
 public class GetAllUsersNotOnBoard {
 
 	@Autowired
-	DataSource dataSource;
-
-	@Autowired
-	ScrumUserRepository scrumUserRepository;
+	UserService userService;
 
 	@GetMapping(path = "/getAllUsersNotOnBoard/{boardId}", produces = "application/json")
-	public ResponseEntity<List<ScrumUser>> getAllUsersOnBoard(@PathVariable String boardId, HttpServletRequest request) {
+	public ResponseEntity<List<ScrumUser>> getAllUsersNotOnBoard(@PathVariable String boardId) {
 		int boardNum = Integer.parseInt(boardId);
-		List<ScrumUser> scrumUserListOnBoard = scrumUserRepository.findByboardUserJoins_boardId(boardNum);
-		List<ScrumUser> scrumUserList = (List<ScrumUser>) scrumUserRepository.findAll();
-		for (ScrumUser su : scrumUserListOnBoard) {
-			scrumUserList.remove(su);
-		}
-		return new ResponseEntity<List<ScrumUser>>(scrumUserList, HttpStatus.OK);
+		return new ResponseEntity<List<ScrumUser>>(userService.getAllUsersNotOnBoard(boardNum), HttpStatus.OK);
 	}
 }
