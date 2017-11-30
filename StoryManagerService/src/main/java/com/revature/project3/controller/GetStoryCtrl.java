@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.project3.beans.Story;
 import com.revature.project3.service.StoryService;
 
-@EnableResourceServer
 @RestController
 public class GetStoryCtrl {
 	

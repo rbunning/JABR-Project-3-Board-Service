@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.project3.bean.ScrumUser;
 import com.revature.project3.dao.ScrumUserRepository;
 
-@EnableResourceServer 
 @RestController
 public class GetAllUsersCtrl {
 

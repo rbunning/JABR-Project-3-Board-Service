@@ -1,4 +1,4 @@
-package com.revature.project3.filter;
+package com.revature.zuul.filter;
 
 import java.io.IOException;
 
