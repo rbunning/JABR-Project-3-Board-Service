@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.revature.project3.bean.Board;
+import com.revature.project3.beans.Board;
 
 public interface BoardRepository extends CrudRepository<Board, Integer> {
 
