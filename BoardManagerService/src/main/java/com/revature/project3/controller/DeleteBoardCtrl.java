@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.project3.bean.Board;
+import com.revature.project3.beans.Board;
 import com.revature.project3.dao.BoardRepository;
 
 @RestController
