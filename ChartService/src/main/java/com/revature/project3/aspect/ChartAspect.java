@@ -22,13 +22,13 @@ public class ChartAspect {
 	@AfterReturning("within(com.revature.project3.service.ChartService)")
 	public void adviseForAllServiceMethodsReturn(JoinPoint jp) {
 		log = Logger.getLogger(jp.getClass().getName());
-		log.info("The serivce method: " + jp.getSignature().getName() + " returned successfully");
+		log.info("The service method: " + jp.getSignature().getName() + " returned successfully");
 	}
 
 	@AfterThrowing("within(com.revature.project3.service.ChartService)")
 	public void adviseForAllServiceMethodsException(JoinPoint jp) {
 		log = Logger.getLogger(jp.getClass().getName());
-		log.info("The serivce method: " + jp.getSignature().getName() + " threw an exception");
+		log.info("The service method: " + jp.getSignature().getName() + " threw an exception");
 	}
 
 }

@@ -2,20 +2,24 @@ package com.revature.project3.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.revature.project3.beans.Chart;
 import com.revature.project3.beans.Story;
@@ -31,10 +35,22 @@ public class GetChartCtrl {
 	@Autowired
 	ChartService chartService;
 
+	@LoadBalanced
+	@Bean
+	public RestTemplate buildRestTemplate(RestTemplateBuilder restTemplateBuilder) {
+		return restTemplateBuilder.build();
+	}
+
+	@Autowired
+	private RestTemplate restTemplate;
+
 	@GetMapping(path = "/getChart/{boardId}", produces = "application/json")
 	public ResponseEntity<ChartDto> getChartData(@PathVariable String boardId, HttpServletRequest request) {
 		int boardNum = Integer.parseInt(boardId);
-		Set<Story> stories = chartService.getStorySet(boardNum);
+
+		String url = "http://story-manager-service/allboardStories/" + boardId;
+		Story[] storyArray = restTemplate.getForObject(url, Story[].class);
+		List<Story> stories = Arrays.asList(storyArray);
 		Map<LocalDate, Integer> storyData = new TreeMap<LocalDate, Integer>();
 		int totalPoints = 0;
 		for (Story story : stories) {
