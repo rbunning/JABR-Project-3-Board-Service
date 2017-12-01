@@ -20,7 +20,19 @@ zuul:
       path: /board-manager-service/**
       sensitiveHeaders:
       serviceId: board-manager-service
+    taskservice:
+      path: /task-manager-service/**
+      sensitiveHeaders:
+      serviceId: task-manager-service
     chartservice:
       path: /chart-service/**
       sensitiveHeaders:
       serviceId: chart-service
+    boardcommentservice:
+      path: /board-comment-service/**
+      sensitiveHeaders:
+      serviceId: board-comment-service
+      
+      
+      
+      
