@@ -12,3 +12,7 @@ zuul:
       path: /user-service/**
       sensitiveHeaders:
       serviceId: user-service
+    storyservice:
+      path: /story-manager-service/**
+      sensitiveHeaders:
+      serviceId: story-manager-service
