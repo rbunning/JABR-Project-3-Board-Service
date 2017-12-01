@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.project3.bean.Task;
+import com.revature.project3.beans.Task;
 import com.revature.project3.dao.TaskRepository;
 
 @EnableEurekaClient

@@ -1,4 +1,4 @@
-package com.revature.project3.bean;
+package com.revature.project3.beans;
 
 import java.io.Serializable;
 import java.util.Set;

@@ -10,23 +10,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.project3.beans.Task;
-import com.revature.project3.dao.TaskRepository;
+import com.revature.project3.bean.Board;
+import com.revature.project3.dao.BoardRepository;
 
 @RestController
-public class CreateTaskCtrl {
+public class DeleteBoardCtrl {
 	@Autowired
 	DataSource dataSource;
-
+	
 	@Autowired
-	TaskRepository taskRepo;
-
-	@PostMapping(path = "/newTask", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Task> addTask(@RequestBody Task newTask, HttpServletRequest request) {
-		System.err.println("Testing new Task");
-		System.err.println("New task is: " + newTask);
-		taskRepo.save(newTask);
-		return new ResponseEntity<Task>(newTask, HttpStatus.OK);
+	BoardRepository boardRepo;
+	
+	@PostMapping(path="/deleteBoard", consumes="application/json")
+	public ResponseEntity<Void> deleteBoard(
+			@RequestBody
+			Board board,
+			HttpServletRequest
+			request
+			) {
+		
+		boardRepo.delete(board);
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		
 	}
-
 }

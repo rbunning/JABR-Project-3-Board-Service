@@ -12,6 +12,7 @@ import com.revature.project3.service.BoardCommentService;
 
 @RestController
 public class AddCommentCtrl {
+
 	@Autowired
 	BoardCommentService boardCommentService;
 
