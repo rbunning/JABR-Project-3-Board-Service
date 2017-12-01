@@ -14,7 +14,11 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,11 +50,17 @@ public class GetChartCtrl {
 
 	@GetMapping(path = "/getChart/{boardId}", produces = "application/json")
 	public ResponseEntity<ChartDto> getChartData(@PathVariable String boardId, HttpServletRequest request) {
-		int boardNum = Integer.parseInt(boardId);
-
+		
 		String url = "http://story-manager-service/allboardStories/" + boardId;
-		Story[] storyArray = restTemplate.getForObject(url, Story[].class);
-		List<Story> stories = Arrays.asList(storyArray);
+		String token = request.getHeader("Authorization"); // Gets the OAuth2 token for the request header.
+		int boardNum = Integer.parseInt(boardId); // Parses the board from the URL.
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON); // Sets the media type to JSON.
+		headers.set("Authorization", token); // Adds the OAuth2 token to the new request header.
+		HttpEntity<String> entity = new HttpEntity<String>("parameters",headers);
+		ResponseEntity<Story[]> resStoryArray = restTemplate.exchange(url, HttpMethod.GET, entity, Story[].class); // Send the new request.
+		
+		List<Story> stories = Arrays.asList(resStoryArray.getBody());
 		Map<LocalDate, Integer> storyData = new TreeMap<LocalDate, Integer>();
 		int totalPoints = 0;
 		for (Story story : stories) {

@@ -20,3 +20,7 @@ zuul:
       path: /board-manager-service/**
       sensitiveHeaders:
       serviceId: board-manager-service
+    chartservice:
+      path: /chart-service/**
+      sensitiveHeaders:
+      serviceId: chart-service
