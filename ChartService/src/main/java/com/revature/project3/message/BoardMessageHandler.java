@@ -17,6 +17,7 @@ public class BoardMessageHandler {
 
 	@StreamListener(target = Sink.INPUT, condition = "headers['Action'] == 'add'")
 	public void addBoard(Board board) {
+		System.out.println(board);
 		Chart chart = new Chart(board.getBoardId(),board.getBoardName());
 		chartRepository.save(chart);
 	}

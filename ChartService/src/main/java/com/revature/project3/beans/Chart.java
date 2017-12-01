@@ -2,6 +2,7 @@ package com.revature.project3.beans;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,6 +48,7 @@ public class Chart implements Serializable {
 		super();
 		this.boardId = boardId;
 		this.chartTitle = chartTitle;
+		this.startDate = Date.valueOf(LocalDate.now().minusDays(1));
 	}
 
 	public int getChartId() {
