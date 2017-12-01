@@ -46,4 +46,8 @@ public class StoryService {
 		dbStory.setLaneTypeId(story.getLaneTypeId()); // Set the lane to the new lane.
 		return StoryRepo.save(dbStory);
 	}
+	
+	public void deleteStoryById(Story story) {
+		StoryRepo.delete(story);
+	}
 }
