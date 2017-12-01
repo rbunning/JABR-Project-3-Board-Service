@@ -12,25 +12,25 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CHART")
+@Table(name = "CHART")
 public class Chart implements Serializable {
 
 	private static final long serialVersionUID = 8410665221636520198L;
-	
+
 	@Id
-	@Column(name="CHART_ID")
-	@SequenceGenerator(allocationSize=1, sequenceName="CHART_SEQ", name="C_SEQ")
-	@GeneratedValue(generator="C_SEQ", strategy=GenerationType.SEQUENCE)
+	@Column(name = "CHART_ID")
+	@SequenceGenerator(allocationSize = 1, sequenceName = "CHART_SEQ", name = "C_SEQ")
+	@GeneratedValue(generator = "C_SEQ", strategy = GenerationType.SEQUENCE)
 	private int chartId;
-	
-	@Column(name="BOARD_ID")
+
+	@Column(name = "BOARD_ID")
 	private int boardId;
-	
-	@Column(name="CHART_TITLE")
+
+	@Column(name = "CHART_TITLE")
 	private String chartTitle;
-	@Column(name="START_DATE")
+	@Column(name = "START_DATE")
 	private Date startDate;
-	
+
 	public Chart() {
 		super();
 	}
@@ -41,6 +41,12 @@ public class Chart implements Serializable {
 		this.boardId = boardId;
 		this.chartTitle = chartTitle;
 		this.startDate = startDate;
+	}
+
+	public Chart(int boardId, String chartTitle) {
+		super();
+		this.boardId = boardId;
+		this.chartTitle = chartTitle;
 	}
 
 	public int getChartId() {
