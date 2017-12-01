@@ -16,3 +16,7 @@ zuul:
       path: /story-manager-service/**
       sensitiveHeaders:
       serviceId: story-manager-service
+    baordservice:
+      path: /board-manager-service/**
+      sensitiveHeaders:
+      serviceId: board-manager-service
