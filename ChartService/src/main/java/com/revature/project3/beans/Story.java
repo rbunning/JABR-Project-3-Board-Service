@@ -3,50 +3,29 @@ package com.revature.project3.beans;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "STORY")
 public class Story implements Serializable {
 
 	private static final long serialVersionUID = 3437652641718304355L;
 
-	@Id
-	@Column(name = "STORY_ID")
-	@SequenceGenerator(name = "storySeq", sequenceName = "story_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "storySeq")
 	private int storyId;
 
-	@Column(name = "BOARD_ID")
 	private int boardId;
 
-	@Column(name = "LT_ID")
 	private int laneTypeId;
 
-	@Column(name = "STORY_NAME")
 	private String storyName;
 
-	@Column(name = "STORY_POINTS")
 	private int storyPoints;
 
-	@Column(name = "STORY_DESC")
 	private String storyDesc;
 
-	@Column(name = "LAST_MOVE_DATE")
 	private Date lastMoveDate;
 
 	public Story() {
 		super();
 	}
 
-	public Story(int boardId, int laneTypeId, String storyName, int storyPoints, String storyDesc,
-			Date lastMoveDate) {
+	public Story(int boardId, int laneTypeId, String storyName, int storyPoints, String storyDesc, Date lastMoveDate) {
 		super();
 		this.boardId = boardId;
 		this.laneTypeId = laneTypeId;
@@ -72,15 +51,7 @@ public class Story implements Serializable {
 		return storyId;
 	}
 
-	//Won't need tasks for Chart
-//	public Set<Task> getTask() {
-//		return task;
-//	}
-//
-//	public void setTask(Set<Task> task) {
-//		this.task = task;
-//	}
-
+	// Won't need tasks for Chart
 	public void setStoryId(int storyId) {
 		this.storyId = storyId;
 	}
@@ -139,7 +110,8 @@ public class Story implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Story [storyId=" + storyId + ", boardId=" + boardId + ", laneId=" + laneTypeId + ", storyName=" + storyName
-				+ ", storyPoints=" + storyPoints + ", storyDesc=" + storyDesc + ", lastMoveDate=" + lastMoveDate + "]";
+		return "Story [storyId=" + storyId + ", boardId=" + boardId + ", laneId=" + laneTypeId + ", storyName="
+				+ storyName + ", storyPoints=" + storyPoints + ", storyDesc=" + storyDesc + ", lastMoveDate="
+				+ lastMoveDate + "]";
 	}
 }
