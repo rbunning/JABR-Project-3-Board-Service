@@ -44,6 +44,7 @@ public class StoryService {
 	public Story updateStoryByLaneType(Story story) {
 		Story dbStory = StoryRepo.findOne(story.getStoryId()); // Gets the current record.
 		dbStory.setLaneTypeId(story.getLaneTypeId()); // Set the lane to the new lane.
+		dbStory.setLastMoveDate(Date.valueOf(LocalDate.now())); // Set date to the date created.
 		return StoryRepo.save(dbStory);
 	}
 	
