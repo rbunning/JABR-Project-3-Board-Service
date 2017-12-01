@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>StoryService</name>
-	<description>The services for story mangment</description>
+	<description>The services for story management</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -30,6 +30,11 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.noraui</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>12.1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>

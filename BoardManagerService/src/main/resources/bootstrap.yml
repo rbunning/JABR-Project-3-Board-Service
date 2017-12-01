@@ -4,3 +4,11 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+
+security:
+ oauth2:
+   resource:
+     accessTokenUri: http://localhost:8765/user-service/oauth/check_token
+     userAuthorizationUri: http://localhost:8765/user-service/oauth/authorize
+     jwt:
+       keyUri: http://localhost:8765/user-service/oauth/token_key
