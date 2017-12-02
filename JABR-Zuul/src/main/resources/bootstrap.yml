@@ -4,4 +4,35 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-#      uri: http://18.221.160.13:8888
+#     uri: http://18.221.160.13:8888
+
+zuul:
+  routes:
+    userservice:
+      path: /user-service/**
+      sensitiveHeaders:
+      serviceId: user-service
+    storyservice:
+      path: /story-manager-service/**
+      sensitiveHeaders:
+      serviceId: story-manager-service
+    baordservice:
+      path: /board-manager-service/**
+      sensitiveHeaders:
+      serviceId: board-manager-service
+    taskservice:
+      path: /task-manager-service/**
+      sensitiveHeaders:
+      serviceId: task-manager-service
+    chartservice:
+      path: /chart-service/**
+      sensitiveHeaders:
+      serviceId: chart-service
+    boardcommentservice:
+      path: /board-comment-service/**
+      sensitiveHeaders:
+      serviceId: board-comment-service
+      
+      
+      
+      
