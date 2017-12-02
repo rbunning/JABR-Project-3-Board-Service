@@ -85,6 +85,10 @@ public class GetChartCtrl {
 		}
 		dataLabels.add(prevDate.toString());
 		dataValues.add(totalPoints);
+//		if(totalPoints != 0){
+//			dataValues.add(0);
+//		}
+		
 
 		String[] dataLabelsArray = dataLabels.toArray(new String[dataLabels.size()]);
 		int[] dataValuesArray = new int[dataValues.size()];
