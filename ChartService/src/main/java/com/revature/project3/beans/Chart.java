@@ -89,7 +89,7 @@ public class Chart implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Chart [chardId=" + chartId + ", boardId=" + boardId + ", chartTitle=" + chartTitle + ", startDate="
+		return "Chart [chartId=" + chartId + ", boardId=" + boardId + ", chartTitle=" + chartTitle + ", startDate="
 				+ startDate + "]";
 	}
 }

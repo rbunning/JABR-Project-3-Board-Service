@@ -12,6 +12,7 @@ import com.revature.project3.beans.Task;
 import com.revature.project3.dao.TaskRepository;
 import com.revature.project3.service.LogsService;
 
+//Regular Unit tests
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TaskServiceApplicationTests {
