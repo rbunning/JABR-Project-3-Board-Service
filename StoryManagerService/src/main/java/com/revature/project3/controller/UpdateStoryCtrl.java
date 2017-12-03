@@ -15,16 +15,10 @@ public class UpdateStoryCtrl {
 	@Autowired
 	StoryService service;
 
-	// @Autowired
-	// StoryMessageSource storyMessageSource;
-
 	// This method used a key pair to send the lane type to the service.
 	@PostMapping("/moveStoryLane")
 	public Story UpdateStoryLane(@RequestBody Story story) {
 		story = service.updateStoryByLaneType(story);
-		// Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action",
-		// "update").build();
-		// storyMessageSource.storyMessage().send(msg);
 		return story;
 	}
 
@@ -33,9 +27,6 @@ public class UpdateStoryCtrl {
 	public Story UpdateStoryLane2(Story story, @PathVariable String lane) {
 		story.setLaneTypeId(Integer.parseInt(lane));
 		story = service.updateStoryByLaneType(story);
-		// Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action",
-		// "update").build();
-		// storyMessageSource.storyMessage().send(msg);
 		return story;
 	}
 }
