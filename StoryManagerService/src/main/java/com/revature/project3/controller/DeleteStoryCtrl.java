@@ -25,6 +25,5 @@ public class DeleteStoryCtrl {
 	public ResponseEntity<Void> deleteStory(@RequestBody Story story, HttpServletRequest request) {
 		storyRepo.delete(story);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-
 	}
 }
