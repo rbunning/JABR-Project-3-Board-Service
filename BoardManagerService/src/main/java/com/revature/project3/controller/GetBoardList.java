@@ -19,7 +19,7 @@ public class GetBoardList {
 	@Autowired
 	BoardManagerService boardManagerService;
 
-	@PostMapping(path = "/getBoards", consumes = "text/plain", produces = "application/json")
+	@PostMapping(path = "/getBoards", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<List<Board>> getBoardList(@RequestBody String boardIds) {
 		List<String> boardIdStringList = new ArrayList<String>(Arrays.asList(boardIds.split(",")));
 		ArrayList<Integer> boardIdList = new ArrayList<Integer>();
