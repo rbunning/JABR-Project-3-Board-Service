@@ -16,32 +16,20 @@ public class AddStoryCtrl {
 	@Autowired
 	StoryService service;
 
-//	@Autowired
-//	StoryMessageSource storyMessageSource;
-
 	// Adds a new story to the dataBase.
 	@PostMapping("/addStory")
 	public Story addStory(@RequestBody Story story) {
-
 		story = service.addStory(story);
-		// Message<Story> msg = MessageBuilder.withPayload(story).setHeader("Action",
-		// "add").build();
-		// storyMessageSource.storyMessage().send(msg);
 		return story;
 	}
 
 	// Adds a new empty story to the dataBase.
 	@GetMapping("/addStory/{storyId}")
 	public Story addEmptyStory(@PathVariable String storyId) {
-
 		Story story = new Story(Integer.parseInt(storyId));
 		story.setStoryDesc("");
 		story.setStoryName(storyId);
 		story = service.addStory(story);
-		// Message<String> msg =
-		// MessageBuilder.withPayload(story.toString()).setHeader("Action",
-		// "add").build();
-		// storyMessageSource.storyMessage().send(msg);
 		return story;
 	}
 }
