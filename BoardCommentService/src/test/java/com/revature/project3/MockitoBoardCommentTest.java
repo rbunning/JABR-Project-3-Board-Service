@@ -43,7 +43,6 @@ public class MockitoBoardCommentTest {
 		when(mockCommentRepo.save(same(testComment))).thenReturn(testComment);
 		BoardComment returnedComment = mockCommentTestService.addBoardComment(testComment);
 		assertEquals(testComment, returnedComment);
-		
 	}
 	
 	@Test
