@@ -95,11 +95,6 @@ public class GetChartCtrl {
 		}
 		dataLabels.add(prevDate.toString());
 		dataValues.add(totalPoints);
-//		if(totalPoints != 0){
-//			dataValues.add(0);
-//		}
-		
-
 		String[] dataLabelsArray = dataLabels.toArray(new String[dataLabels.size()]);
 		int[] dataValuesArray = new int[dataValues.size()];
 		for (int i = 0; i < dataValuesArray.length; i++) {
@@ -110,7 +105,6 @@ public class GetChartCtrl {
 		cdsdList.add(cdsd);
 		ChartDataDto cdd = new ChartDataDto(dataLabelsArray, cdsdList);
 		ChartDto burndownChart = new ChartDto(cdd);
-		System.err.println("burndownChart = " + burndownChart);
 		return new ResponseEntity<ChartDto>(burndownChart, HttpStatus.OK);
 	}
 
