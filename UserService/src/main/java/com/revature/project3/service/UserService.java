@@ -38,7 +38,6 @@ public class UserService implements UserDetailsService {
 		BoardUserJoin newBoardUser = new BoardUserJoin(boardUserDto.getBoardId(), scrumUser);
 		boardUsers.add(newBoardUser);
 		scrumUser.setBoardUserJoins(boardUsers);
-		//scrumUserRepository.save(scrumUser);
 		boardUserJoinRepository.save(newBoardUser);
 	}
 
