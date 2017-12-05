@@ -9,4 +9,11 @@ spring:
       server:
         git:
           uri: https://github.com/rbunning/JABR-Project-3-config-yml-files.git
+<<<<<<< HEAD
+          default-label: localTestBranch
+          # uri: https://github.com/AllenJArce/Local-Project-3-config-yml-files.git
+          
+          
+=======
 #          default-label: localTestBranch
+>>>>>>> be218ded176c5784f409cc24e65c611ccb5730d0
