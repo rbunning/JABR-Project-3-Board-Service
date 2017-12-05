@@ -1,21 +1,36 @@
 package com.revature.project3.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.revature.project3.beans.BoardUserJoin;
 import com.revature.project3.beans.ScrumUser;
+import com.revature.project3.dao.BoardUserJoinRepository;
 import com.revature.project3.dao.ScrumUserRepository;
 import com.revature.project3.dto.BoardUserDto;
 
 @Service(value = "AppUserService")
-public class UserService {
+public class UserService implements UserDetailsService {
 
 	@Autowired
 	ScrumUserRepository scrumUserRepository;
+	
+	@Autowired
+	BoardUserJoinRepository boardUserJoinRepository;
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Optional<ScrumUser> usersOptional = scrumUserRepository.findOneByscrumUserUsername(username);
+		usersOptional.orElseThrow(() -> new UsernameNotFoundException("Username not found!"));
+		return usersOptional.get();
+	}
 
 	public void addUser(BoardUserDto boardUserDto) {
 		ScrumUser scrumUser = scrumUserRepository.findOne(boardUserDto.getScrumUserId());
@@ -23,7 +38,7 @@ public class UserService {
 		BoardUserJoin newBoardUser = new BoardUserJoin(boardUserDto.getBoardId(), scrumUser);
 		boardUsers.add(newBoardUser);
 		scrumUser.setBoardUserJoins(boardUsers);
-		scrumUserRepository.save(scrumUser);
+		boardUserJoinRepository.save(newBoardUser);
 	}
 
 	public List<ScrumUser> getUsers() {

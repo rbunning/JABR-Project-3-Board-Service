@@ -7,12 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="TASK")
@@ -82,9 +78,5 @@ public class Task implements Serializable {
 	public String toString() {
 		return "Task [taskId=" + taskId + ", storyId=" + storyId + ", description=" + description + "]";
 	}
-
-	
-
-	
 
 }
