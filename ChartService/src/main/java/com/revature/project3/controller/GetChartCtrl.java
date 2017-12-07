@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.revature.project3.beans.Chart;
 import com.revature.project3.beans.Story;
 import com.revature.project3.dto.ChartDataDto;
@@ -34,6 +36,7 @@ import com.revature.project3.service.ChartService;
 
 @EnableEurekaClient
 @RestController
+@EnableCircuitBreaker
 public class GetChartCtrl {
 
 	@Autowired
@@ -48,6 +51,7 @@ public class GetChartCtrl {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	@HystrixCommand(fallbackMethod = "failedChartResponse")
 	@GetMapping(path = "/getChart/{boardId}", produces = "application/json")
 	public ResponseEntity<ChartDto> getChartData(@PathVariable String boardId, HttpServletRequest request) {
 		
@@ -76,6 +80,7 @@ public class GetChartCtrl {
 		List<String> dataLabels = new ArrayList<>();
 		List<Integer> dataValues = new ArrayList<>();
 		Chart chart = chartService.getChart(boardNum);
+		System.err.println("boardNum for getChart is: " + boardNum + " This is chartService.getChart " + chart);
 		LocalDate startDate = chart.getStartDate().toLocalDate();
 		dataLabels.add(startDate.toString());
 		dataValues.add(totalPoints);
@@ -106,7 +111,28 @@ public class GetChartCtrl {
 		cdsdList.add(cdsd);
 		ChartDataDto cdd = new ChartDataDto(dataLabelsArray, cdsdList);
 		ChartDto burndownChart = new ChartDto(cdd);
+		System.err.println("This is burndownChart " + burndownChart);
 		return new ResponseEntity<ChartDto>(burndownChart, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ChartDto> failedChartResponse(String message, HttpServletRequest request) {
+		
+		
+		List<String> defaultDataLabels = new ArrayList<>();
+		List<Integer> defaultDataValues = new ArrayList<>();
+		defaultDataLabels.add("This is default label 1");
+		defaultDataValues.add(0);
+		String[] defaultLabelsArray = defaultDataLabels.toArray(new String[defaultDataLabels.size()]);
+		int[] defaultDataValuesArray = new int[defaultDataValues.size()];
+		ChartDatasetDto defaultCdsd = new ChartDatasetDto(defaultDataValuesArray);
+		List<ChartDatasetDto> defaultCdsdList = new ArrayList<>();
+		defaultCdsdList.add(defaultCdsd);
+		ChartDataDto defaultCdd = new ChartDataDto(defaultLabelsArray, defaultCdsdList);
+		ChartDto defaultChart = new ChartDto(defaultCdd);
+		
+		System.err.println("message is: " + message);
+		System.err.println("fallback Success!");
+		return new ResponseEntity<ChartDto>(defaultChart, HttpStatus.OK);
 	}
 
 }
