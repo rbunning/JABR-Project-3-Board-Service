@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: task-manager-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+#      uri: http://18.221.160.13:8888
