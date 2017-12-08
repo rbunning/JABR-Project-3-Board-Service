@@ -15,6 +15,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -40,6 +41,9 @@ import com.revature.project3.service.ChartService;
 public class GetChartCtrl {
 
 	@Autowired
+	private Environment environment;
+	
+	@Autowired
 	ChartService chartService;
 
 	@LoadBalanced
@@ -54,8 +58,8 @@ public class GetChartCtrl {
 	@HystrixCommand(fallbackMethod = "failedChartResponse")
 	@GetMapping(path = "/getChart/{boardId}", produces = "application/json")
 	public ResponseEntity<ChartDto> getChartData(@PathVariable String boardId, HttpServletRequest request) {
-		
-		String url = "http://story-manager-service/allboardStories/" + boardId;
+		String storyUrl = environment.getProperty("rest-template-urls.story-service");
+		String url = "http://"+ storyUrl +"/allboardStories/" + boardId;
 		String token = request.getHeader("Authorization"); // Gets the OAuth2 token for the request header.
 		int boardNum = Integer.parseInt(boardId); // Parses the board from the URL.
 		HttpHeaders headers = new HttpHeaders();
