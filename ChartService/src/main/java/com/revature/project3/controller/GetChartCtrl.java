@@ -55,7 +55,13 @@ public class GetChartCtrl {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@HystrixCommand(fallbackMethod = "failedChartResponse")
+	/**
+	 * Retrieves the data to populate the chart
+	 * @param boardId
+	 * @param request
+	 * @return
+	 */
+	@HystrixCommand(fallbackMethod = "failedChartResponse")	//Circuit breaker with fallback method for default data
 	@GetMapping(path = "/getChart/{boardId}", produces = "application/json")
 	public ResponseEntity<ChartDto> getChartData(@PathVariable String boardId, HttpServletRequest request) {
 		String storyUrl = environment.getProperty("rest-template-urls.story-service");
@@ -84,7 +90,6 @@ public class GetChartCtrl {
 		List<String> dataLabels = new ArrayList<>();
 		List<Integer> dataValues = new ArrayList<>();
 		Chart chart = chartService.getChart(boardNum);
-		System.err.println("boardNum for getChart is: " + boardNum + " This is chartService.getChart " + chart);
 		LocalDate startDate = chart.getStartDate().toLocalDate();
 		dataLabels.add(startDate.toString());
 		dataValues.add(totalPoints);
@@ -115,16 +120,19 @@ public class GetChartCtrl {
 		cdsdList.add(cdsd);
 		ChartDataDto cdd = new ChartDataDto(dataLabelsArray, cdsdList);
 		ChartDto burndownChart = new ChartDto(cdd);
-		System.err.println("This is burndownChart " + burndownChart);
 		return new ResponseEntity<ChartDto>(burndownChart, HttpStatus.OK);
 	}
 	
+	/**
+	 * Sends a response with default data for the chart when StoryManagerService is down
+	 * @param message
+	 * @param request
+	 * @return
+	 */
 	public ResponseEntity<ChartDto> failedChartResponse(String message, HttpServletRequest request) {
-		
-		
 		List<String> defaultDataLabels = new ArrayList<>();
 		List<Integer> defaultDataValues = new ArrayList<>();
-		defaultDataLabels.add("This is default label 1");
+		defaultDataLabels.add("Default Label 1");
 		defaultDataValues.add(0);
 		String[] defaultLabelsArray = defaultDataLabels.toArray(new String[defaultDataLabels.size()]);
 		int[] defaultDataValuesArray = new int[defaultDataValues.size()];
@@ -133,9 +141,6 @@ public class GetChartCtrl {
 		defaultCdsdList.add(defaultCdsd);
 		ChartDataDto defaultCdd = new ChartDataDto(defaultLabelsArray, defaultCdsdList);
 		ChartDto defaultChart = new ChartDto(defaultCdd);
-		
-		System.err.println("message is: " + message);
-		System.err.println("fallback Success!");
 		return new ResponseEntity<ChartDto>(defaultChart, HttpStatus.OK);
 	}
 

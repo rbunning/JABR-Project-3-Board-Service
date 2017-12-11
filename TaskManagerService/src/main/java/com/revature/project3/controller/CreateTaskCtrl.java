@@ -21,10 +21,15 @@ public class CreateTaskCtrl {
 	@Autowired
 	TaskRepository taskRepo;
 
+	/**
+	 * Method to save new task to the database
+	 * 
+	 * @param newTask
+	 * @param request
+	 * @return newTask and HttpStatus.OK
+	 */
 	@PostMapping(path = "/newTask", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Task> addTask(@RequestBody Task newTask, HttpServletRequest request) {
-		System.err.println("Testing new Task");
-		System.err.println("New task is: " + newTask);
 		taskRepo.save(newTask);
 		return new ResponseEntity<Task>(newTask, HttpStatus.OK);
 	}

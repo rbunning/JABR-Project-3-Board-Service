@@ -22,11 +22,22 @@ public class GetTaskCtrl {
 	@Autowired
 	TaskRepository taskRepo;
 	
+	/**
+	 * Post request that retrieves a specific task from the database that matches taskId
+	 * @param t
+	 * @return Task
+	 */
+	
 	@PostMapping("/getTask")
 	public Task getTask(@RequestBody Task t) {
 		return taskRepo.findOne(t.getTaskId());
 	}
 	
+	/**
+	 * Get request that retrieves a specific task from the database that matches taskId
+	 * @param t
+	 * @return Task
+	 */
 	@GetMapping(path = "/getTask/{taskId}")
 	public Task getTask(@PathVariable String taskId) {
 		int taskNum = Integer.parseInt(taskId);
