@@ -5,10 +5,10 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.revature.project3.beans.BoardUserJoin;
 import com.revature.project3.beans.ScrumUser;
@@ -21,7 +21,7 @@ public class UserService implements UserDetailsService {
 
 	@Autowired
 	ScrumUserRepository scrumUserRepository;
-	
+
 	@Autowired
 	BoardUserJoinRepository boardUserJoinRepository;
 
@@ -74,7 +74,6 @@ public class UserService implements UserDetailsService {
 				validUser.setScrumUserId(0);
 			}
 		}
-		validUser.setScrumUserPassword("");
 		return validUser;
 	}
 }
