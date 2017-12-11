@@ -74,6 +74,7 @@ public class UserService implements UserDetailsService {
 				validUser.setScrumUserId(0);
 			}
 		}
+		validUser.setScrumUserPassword("");
 		return validUser;
 	}
 }
