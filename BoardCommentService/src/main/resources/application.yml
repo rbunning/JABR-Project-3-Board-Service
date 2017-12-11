@@ -5,3 +5,4 @@ spring:
     config:
       uri: http://localhost:8888
 #      uri: http://18.221.160.13:8888
+
