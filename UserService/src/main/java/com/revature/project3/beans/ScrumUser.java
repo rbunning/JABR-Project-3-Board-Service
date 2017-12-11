@@ -52,7 +52,7 @@ public class ScrumUser implements Serializable, UserDetails {
 	private String scrumUserUsername;
 
 	@Column(name = "SU_PASSWORD")
-	private String scrumUserPassword;
+	private transient String scrumUserPassword;
 
 	public ScrumUser() {
 		super();
