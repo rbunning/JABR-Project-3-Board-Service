@@ -19,17 +19,8 @@ public class ChartService {
 		return chartRepo.findByboardId(boardNum);
 	}
 	
-	@HystrixCommand(fallbackMethod = "fallBackResponse")
-	public void testFallback() {
-		System.err.println("This is testing fallback");
-	}
-	
-	public void fallBackResponse( ) {
-		System.err.println("Fallback success!");
-	}
-	
 	public Chart defaultChart(int boardNum) {
-		Chart defaultChart = new Chart(100, "This is default board");
+		Chart defaultChart = new Chart(100, "Default Board");
 		return defaultChart;
 	}
 }

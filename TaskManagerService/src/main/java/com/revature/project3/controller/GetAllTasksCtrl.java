@@ -26,12 +26,16 @@ public class GetAllTasksCtrl {
 	@Autowired
 	TaskRepository taskRepo;
 	
+	/**
+	 * Retrieves all tasks from the database that match the given storyId
+	 * @param storyId
+	 * @param request
+	 * @return
+	 */
 	@GetMapping(path = "/getAllTasks/{storyId}", produces = "application/json")	
 	public ResponseEntity<List<Task>> getTasksByStoryId(@PathVariable String storyId, HttpServletRequest request) {
 		int storyNum = Integer.parseInt(storyId);
-		System.err.println("Story Id: " + storyId);
 		List<Task> taskList = (List<Task>) taskRepo.findBystoryId(storyNum);
-		System.out.println("Tasks: " + taskList );
 		return new ResponseEntity<List<Task>>(taskList, HttpStatus.OK);
 	}
 }
