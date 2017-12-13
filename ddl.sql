@@ -13,6 +13,7 @@ GRANT CONNECT, RESOURCE TO p3user;
 CREATE USER p3chart IDENTIFIED BY p4ssw0rd;
 GRANT CONNECT, RESOURCE TO p3chart;
 
+conn p3board/p4ssw0rd;
 
 -- For board manager service
 CREATE TABLE board(
@@ -22,6 +23,29 @@ CREATE TABLE board(
 );
 /
 CREATE SEQUENCE board_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE logs(
+ l_id INT,
+ l_dated VARCHAR2(4000),
+ l_level VARCHAR2(4000),
+ l_logger VARCHAR2(4000),
+ l_message VARCHAR2(4000),
+ PRIMARY KEY(l_id)
+);
+/
+CREATE SEQUENCE log_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER log_seq_trg 
+BEFORE INSERT ON logs
+FOR EACH ROW
+BEGIN
+IF :new.L_ID IS NULL THEN
+  SELECT log_seq.NEXTVAL INTO :new.L_ID FROM dual;
+END IF;
+END;
+/
+
+conn p3story/p4ssw0rd;
 
 -- For story manager service
 CREATE TABLE story(
@@ -37,6 +61,29 @@ CREATE TABLE story(
 /
 CREATE SEQUENCE story_seq START WITH 1 INCREMENT BY 1;
 
+CREATE TABLE logs(
+ l_id INT,
+ l_dated VARCHAR2(4000),
+ l_level VARCHAR2(4000),
+ l_logger VARCHAR2(4000),
+ l_message VARCHAR2(4000),
+ PRIMARY KEY(l_id)
+);
+/
+CREATE SEQUENCE log_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER log_seq_trg 
+BEFORE INSERT ON logs
+FOR EACH ROW
+BEGIN
+IF :new.L_ID IS NULL THEN
+  SELECT log_seq.NEXTVAL INTO :new.L_ID FROM dual;
+END IF;
+END;
+/
+
+conn p3task/p4ssw0rd;
+
 -- For task manager service
 CREATE TABLE task(
  task_id INT,
@@ -46,6 +93,29 @@ CREATE TABLE task(
 );
 /
 CREATE SEQUENCE task_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE logs(
+ l_id INT,
+ l_dated VARCHAR2(4000),
+ l_level VARCHAR2(4000),
+ l_logger VARCHAR2(4000),
+ l_message VARCHAR2(4000),
+ PRIMARY KEY(l_id)
+);
+/
+CREATE SEQUENCE log_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER log_seq_trg 
+BEFORE INSERT ON logs
+FOR EACH ROW
+BEGIN
+IF :new.L_ID IS NULL THEN
+  SELECT log_seq.NEXTVAL INTO :new.L_ID FROM dual;
+END IF;
+END;
+/
+
+conn p3user/p4ssw0rd;
 
 -- For user service
 CREATE TABLE role_type(
@@ -76,6 +146,29 @@ CREATE TABLE board_user_join(
 /
 CREATE SEQUENCE scrum_user_seq START WITH 1 INCREMENT BY 1;
 
+CREATE TABLE logs(
+ l_id INT,
+ l_dated VARCHAR2(4000),
+ l_level VARCHAR2(4000),
+ l_logger VARCHAR2(4000),
+ l_message VARCHAR2(4000),
+ PRIMARY KEY(l_id)
+);
+/
+CREATE SEQUENCE log_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER log_seq_trg 
+BEFORE INSERT ON logs
+FOR EACH ROW
+BEGIN
+IF :new.L_ID IS NULL THEN
+  SELECT log_seq.NEXTVAL INTO :new.L_ID FROM dual;
+END IF;
+END;
+/
+
+conn p3chart/p4ssw0rd;
+
 -- For chart service
 CREATE TABLE chart(
  chart_id INT,
@@ -97,25 +190,4 @@ CREATE TABLE board_comment(
 );
 /
 CREATE SEQUENCE board_comment_seq START WITH 1 INCREMENT BY 1;
-
---In every database run the following for logging
-CREATE TABLE logs(
- l_id INT,
- l_dated VARCHAR2(4000),
- l_level VARCHAR2(4000),
- l_logger VARCHAR2(4000),
- l_message VARCHAR2(4000),
- PRIMARY KEY(l_id)
-);
-/
-CREATE SEQUENCE log_seq START WITH 1 INCREMENT BY 1;
-
-CREATE OR REPLACE TRIGGER log_seq_trg 
-BEFORE INSERT ON logs
-FOR EACH ROW
-BEGIN
-IF :new.L_ID IS NULL THEN
-  SELECT log_seq.NEXTVAL INTO :new.L_ID FROM dual;
-END IF;
-END;
-/
+exit;
