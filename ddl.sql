@@ -185,7 +185,7 @@ CREATE TABLE board_comment(
  board_id INT,
  su_id INT,
  comment_desc VARCHAR2(4000),
- comment_date DATETIME DEFAULT sysdate,
+ comment_date DATE DEFAULT sysdate,
  PRIMARY KEY(board_comment_id)
 );
 /
