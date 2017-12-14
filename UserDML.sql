@@ -1,3 +1,5 @@
+conn p3user/p4ssw0rd;
+
 Insert into P3USER.ROLE_TYPE (RT_ID,RT_NAME) values (1,'User');
 Insert into P3USER.ROLE_TYPE (RT_ID,RT_NAME) values (2,'Scrum Master');
 Insert into P3USER.ROLE_TYPE (RT_ID,RT_NAME) values (3,'Developer');
@@ -8,3 +10,4 @@ Insert into P3USER.SCRUM_USER (SU_ID,RT_ID,SU_FN,SU_LN,SU_USERNAME,SU_PASSWORD) 
 Insert into P3USER.SCRUM_USER (SU_ID,RT_ID,SU_FN,SU_LN,SU_USERNAME,SU_PASSWORD) values (3,3,'Test','Developer','dev','684a5f936b784fe17af79f0054d0dd72b4b6818bee24ac46f3c720c53fa4349525dda61f9cb5287ae7fca4ae4e7f545a68b49748ce8e2fe4e0172a57f27bf4c6');
 Insert into P3USER.SCRUM_USER (SU_ID,RT_ID,SU_FN,SU_LN,SU_USERNAME,SU_PASSWORD) values (4,4,'QA','Test','qa','21ff8c52bd23526bd49266f1987da59de23b62b4c7b97fec03db269792453c9622990bd29fac013a08dbfc61d6b9e94d8a08914a0216377270e53b8cc183b63b');
 commit;
+exit;
