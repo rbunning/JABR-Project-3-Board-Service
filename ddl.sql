@@ -13,6 +13,9 @@ GRANT CONNECT, RESOURCE TO p3user;
 CREATE USER p3chart IDENTIFIED BY p4ssw0rd;
 GRANT CONNECT, RESOURCE TO p3chart;
 
+CREATE USER p3boardcomment IDENTIFIED BY p4ssw0rd;
+GRANT CONNECT, RESOURCE TO p3boardcomment;
+
 
 -- For board manager service
 CREATE TABLE board(
